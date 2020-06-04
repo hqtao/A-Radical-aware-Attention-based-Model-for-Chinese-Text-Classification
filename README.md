@@ -7,9 +7,9 @@ This is the implementation of  [A Radical-aware Attention-based Model for Chines
 After the publication, we went deeper into the designing of architecture 
 and managed to make some improvement in promoting some models effectiveness.
 
-- WCLSTM实现了论文Baseline中的CLSTM和CBLSTM
-- WCRLSTM实现了RAFG（BLSTM_attention）、FourLSTM、FourBLSTM
-- WRCLSTM实现了字&词&词级部首三种特征的拼接模型（含单向和双向）、词与词级部首间的attention
+- WCLSTM realizes the Baseline of CLSTM and CBLSTM;
+- WCRLSTM realizes RAFG（BLSTM_attention）, FourLSTM and FourBLSTM;
+- WRCLSTM realizes the concatenated model (including unidirectional and bidirectional LSTM versions) of three features: character, word and word-level radical, with an attention mechanism between word and word-level radical;
 
 
 
@@ -65,4 +65,21 @@ python3 WRCLSTM.py --workspace bilstm_att --dataset dataset2 --caption "ours, bi
 ```
 
 #### with radical features
+
+```bash
+# run on dataset1, use gpu(8), use lstm
+python3 WCRLSTM.py --workspace lstm --dataset dataset1 --caption "baseline for wcr, lstm, on dataset1" --net_type lstm --ctx "gpu(8)"
+# run on dataset2, use gpu(9), use lstm
+python3 WCRLSTM.py --workspace lstm --dataset dataset2 --caption "baseline for wcr, lstm, on dataset2" --net_type lstm --ctx "gpu(9)"
+# run on dataset1, use gpu(0), use bilstm
+python3 WCRLSTM.py --workspace bilstm --dataset dataset1 --caption "baseline for wcr, bilstm, on dataset1" --net_type bilstm --ctx "gpu(0)"
+# run on dataset2, use gpu(1), use bilstm
+python3 WCRLSTM.py --workspace bilstm --dataset dataset2 --caption "baseline for wcr, bilstm, on dataset2" --net_type bilstm --ctx "gpu(1)"
+# run on dataset1, use gpu(8), use bilstm_att
+python3 WCRLSTM.py --workspace bilstm_att --dataset dataset1 --caption "ours, bilstm_att, on dataset1" --net_type bilstm_att --ctx "gpu(8)"
+# run on dataset2, use gpu(9), use bilstm_att
+python3 WCRLSTM.py --workspace bilstm_att --dataset dataset2 --caption "ours, bilstm_att, on dataset2" --net_type bilstm_att --ctx "gpu(9)"
+```
+
+
 
